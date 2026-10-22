@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GraphForge grounds working-agent tasks and their verification in evidence graphs over real files. Explore the framework, open dataset, models, and benchmark results.">
+  <meta name="theme-color" content="#f6f8fc">
+  <meta property="og:title" content="GraphForge: Training Working Agents with Graph-Anchored Workspace Synthesis">
+  <meta property="og:description" content="Real files. Evidence graphs. Verifiable working-agent training.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/figures/graphforge_overview.webp">
+  <title>GraphForge · Training Working Agents with Graph-Anchored Workspace Synthesis</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css?v=3">
+  <script src="assets/site-config.js?v=2" defer></script>
+  <script src="assets/main.js?v=2" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="GraphForge home"><img src="assets/favicon.svg" width="28" height="28" alt="">GraphForge</a>
+      <div class="nav-links"><a href="#overview">Overview</a><a href="#framework">Framework</a><a href="#dataset">Dataset</a><a href="#results">Results</a><a href="#citation">Citation <span aria-hidden="true">↗</span></a></div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="paper-title">
+      <div class="eyebrow"><span class="small-node" aria-hidden="true"></span> REAL FILES. GROUNDED TASKS. VERIFIABLE WORK.</div>
+      <h1 id="paper-title"><span class="project-name">Graph<span>Forge</span></span><span class="paper-title">Training Working Agents with<br class="desktop-break"> Graph-Anchored Workspace Synthesis</span></h1>
+      <p class="hero-description">From real-world files to verifiable training trajectories. <br>One evidence graph grounds both the task and how it is judged.</p>
+
+      <div class="authors" aria-label="Paper authors">
+        <span>Qisheng Su<sup>1,3</sup></span><span>Hanchen Wang<sup>2</sup></span><span>Guanru Zhu<sup>2</sup></span><span>Huicheng Jiang<sup>2</sup></span><span>Qiuyinzhe Zhang<sup>1</sup></span>
+        <span>Kou Shi<sup>1</sup></span><span>Zhen Fang<sup>1</sup></span><span>Ziao Zhang<sup>1</sup></span><span>Qingnan Ren<sup>1</sup></span><span>Honglin Guo<sup>2</sup></span><span>Jiazheng Zhang<sup>2</sup></span>
+        <span>Zehui Chen<sup>1</sup></span><span>Tao Gui<sup>2</sup></span><span>Feng Zhao<sup>1</sup></span>
+      </div>
+      <div class="affiliations"><span><sup>1</sup> University of Science and Technology of China</span><span><sup>2</sup> Fudan University</span><span><sup>3</sup> Shanghai Innovation Institute</span></div>
+
+      <div class="resource-links" aria-label="Project resources">
+        <a class="button button-dark" data-resource="paper" href="https://arxiv.org/abs/2609.38923" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6"/></svg><span>Paper <span class="paper-id">arXiv</span></span></a>
+        <a class="button button-blue" data-resource="collection" href="https://huggingface.co/collections/groundhogLLM/graphforge" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Data &amp; Models <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="hero-takeaway"><span class="takeaway-label">THE IDEA</span><p>Give agents <strong>real work</strong>.<br class="mobile-break"> Give every requirement <strong>an evidence anchor</strong>.</p></div>
+      <div class="headline-results" aria-label="Qwen3.6-27B supervised fine-tuning improvements">
+        <div><span class="result-benchmark">GDPVal <span class="metric-unit">/ Elo</span></span><div class="result-number">1445.7 <span>+65.7</span></div><span class="metric-context">Qwen3.6-27B · OpenHands</span></div>
+        <div><span class="result-benchmark">Workspace-Bench-Lite</span><div class="result-number">63.7 <span>+7.7</span></div><span class="metric-context">Qwen3.6-27B · Claude Code</span></div>
+        <div><span class="result-benchmark">SpreadsheetBench II</span><div class="result-number">24.0 <span>+13.7</span></div><span class="metric-context">Qwen3.6-27B · Claude Code</span></div>
+      </div>
+      <p class="hero-footnote">SFT on 2,169 GraphForge trajectories. All gains are relative to the corresponding base model.</p>
+    </section>
+
+    <section id="overview" class="section section-tinted">
+      <div class="container overview-layout">
+        <div class="section-heading"><span class="section-kicker">01 / OVERVIEW</span><h2>Real work needs <br>real evidence.</h2><p>A shared grounding for task creation, verification, and trajectory selection.</p><a class="text-link" href="#framework">Explore the framework <span aria-hidden="true">↓</span></a></div>
+        <div class="abstract"><h3>Abstract</h3><p>Working agents need to read diverse files, coordinate tools, and produce deliverables. Training such agents requires <strong>tasks built on many real files with verifiable results</strong>, but few pipelines exist to synthesize this kind of data. Existing pipelines either generate files with models, which lack realism and diversity, or build tasks on real files without task-specific verifiers, leaving result quality unchecked.</p><p>We introduce <strong>GraphForge</strong>, an evidence-graph based framework that <strong class="abstract-highlight">grounds both the task and its verification in real files</strong>. Starting from occupation-grounded seeds for controlled diversity, GraphForge assembles a workspace of real files for each seed and builds an evidence graph over their relations. Since <strong>the task statement and rubrics are both derived from this graph</strong>, task requirements are backed by the workspace files and <strong>each criterion is anchored to the files needed to verify it</strong>. An initial rollout further tests executability, and a revision agent repairs the task and rubrics against the original files before trajectories are collected.</p><p>Fine-tuning Qwen3.6-27B on <strong>2,169 GraphForge trajectories</strong> brings GDPVal to <strong class="abstract-highlight">1445.7 (+65.7)</strong> under OpenHands, and Workspace-Bench-Lite and SpreadsheetBench II to <strong class="abstract-highlight">63.7 (+7.7)</strong> and <strong class="abstract-highlight">24.0 (+13.7)</strong> under Claude Code. Rejection fine-tuning on the SFT model’s own rollouts, with candidates selected by the evidence-anchored rubrics, <strong>yields further improvements on all three benchmarks</strong>, suggesting that the rubrics provide a useful selection signal. The data and models are available in our <a data-resource="collection" href="https://huggingface.co/collections/groundhogLLM/graphforge" target="_blank" rel="noopener noreferrer">Hugging Face collection</a>.</p></div>
+      </div>
+    </section>
+
+    <section id="framework" class="section container">
+      <div class="section-heading centered"><span class="section-kicker">02 / FRAMEWORK</span><h2>From files to skills.</h2><p>Five stages turn occupational seeds into evidence-grounded training data.</p></div>
+      <figure class="paper-figure framework-figure"><button class="figure-zoom" data-zoom="assets/figures/graphforge_overview.webp" aria-label="Enlarge the GraphForge framework figure"><img src="assets/figures/graphforge_overview.webp" width="2400" height="1138" alt="GraphForge pipeline: O*NET task seeds, real-file workspace, evidence graphs and rubrics, one-step revision, and trajectory admission, followed by SFT or RFT of a working agent." fetchpriority="high"><span class="zoom-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6M7 10h6m-3-3v6"/></svg> Enlarge figure</span></button><figcaption><strong>The GraphForge pipeline.</strong> An evidence graph over real files connects task requirements to verifiable criteria. An initial rollout supports targeted revision before artifact-level admission.</figcaption></figure>
+      <div class="pipeline" aria-label="Explore the five pipeline stages">
+        <div class="stage-tabs" role="tablist" aria-label="Pipeline stage"><button id="stage-tab-0" class="stage-tab active" role="tab" aria-selected="true" aria-controls="stage-panel" data-stage="0"><span>01</span>Task seeds</button><button id="stage-tab-1" class="stage-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="stage-panel" data-stage="1"><span>02</span>Real-file workspace</button><button id="stage-tab-2" class="stage-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="stage-panel" data-stage="2"><span>03</span>Evidence &amp; rubrics</button><button id="stage-tab-3" class="stage-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="stage-panel" data-stage="3"><span>04</span>One-step revision</button><button id="stage-tab-4" class="stage-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="stage-panel" data-stage="4"><span>05</span>Trajectory admission</button></div>
+        <div id="stage-panel" class="stage-panel" role="tabpanel" aria-labelledby="stage-tab-0" tabindex="0"><div><span class="detail-label">DIVERSITY BY DESIGN</span><h3>Start with occupational demand.</h3></div><p>O*NET occupations and official work activities define case-neutral seeds. Coverage-based selection balances occupations, task types, execution patterns, and input file families before retrieval begins.</p></div>
+      </div>
+      <aside class="grounding-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="19" cy="19" r="3"/><path d="m8 10 8-4M8 14l8 4"/></svg><p><strong>One graph. Two roles.</strong> The working agent sees the task and workspace. The judge additionally receives evidence anchors and verification instructions that point back to the original files.</p></aside>
+    </section>
+
+    <section id="dataset" class="section section-tinted">
+      <div class="container">
+        <div class="section-heading split-heading"><div><span class="section-kicker">03 / DATASET</span><h2>Broad coverage.<br>Long-horizon work.</h2></div><p>Real documents, cross-file dependencies, and full tool-interaction histories. Admitted teacher trajectories form a compact corpus for working-agent training.</p></div>
+        <div class="dataset-stats"><div><strong>2,169</strong><span>training trajectories</span></div><div><strong>466</strong><span>O*NET task types</span></div><div><strong>16</strong><span>execution patterns</span></div><div><strong>162k</strong><span>mean tokens / trajectory</span></div></div>
+        <div class="dataset-figures">
+          <figure class="paper-figure"><div class="figure-heading"><span>A</span><h3>Occupations × execution patterns</h3></div><button class="figure-zoom" data-zoom="assets/figures/joint_coverage.webp" aria-label="Enlarge sector and execution pattern coverage"><img src="assets/figures/joint_coverage.webp" width="2400" height="1168" loading="lazy" alt="Heatmap of GraphForge trajectory counts across occupational sectors and execution patterns."></button><figcaption>164 of 256 sector–pattern combinations are represented, spanning 15 occupational sectors. Gray cells mark unobserved combinations.</figcaption></figure>
+          <figure class="paper-figure"><div class="figure-heading"><span>B</span><h3>Real-file inputs</h3></div><button class="figure-zoom" data-zoom="assets/figures/input_families.webp" aria-label="Enlarge input file family distribution"><img src="assets/figures/input_families.webp" width="2400" height="1591" loading="lazy" alt="Distribution of materialized input file families; PDFs appear in 96.7 percent of trajectories."></button><figcaption>Most tasks use several file families. PDF appears in 96.7% of trajectories; a single task can count toward multiple families.</figcaption></figure>
+        </div>
+        <figure class="paper-figure length-figure"><div class="figure-heading"><span>C</span><h3>Built for extended tool use</h3></div><button class="figure-zoom" data-zoom="assets/figures/trajectory_length.webp" aria-label="Enlarge trajectory length distribution"><img src="assets/figures/trajectory_length.webp" width="2400" height="1031" loading="lazy" alt="Distributions of assistant steps and token length in the 2,169-example SFT corpus."></button><figcaption>Mean trajectory: <strong>50.0 assistant steps</strong> and <strong>162.0k tokens</strong>. Median: 48 steps and 158.0k tokens. Full reasoning and tool-interaction history are preserved.</figcaption></figure>
+        <div class="dataset-bottom"><p>From <strong>3,638 materialized tasks</strong> to <strong>2,150 unique training workspaces</strong>. Trajectories pass artifact checks, an evidence-anchored score threshold (&gt; 0.90), and behavior filtering.</p><a class="text-link" data-resource="collection" href="https://huggingface.co/collections/groundhogLLM/graphforge" target="_blank" rel="noopener noreferrer">Explore data &amp; models <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section id="results" class="section container">
+      <div class="section-heading centered"><span class="section-kicker">04 / EXPERIMENTS</span><h2>Skills that transfer.</h2><p>One training corpus. Two base models. Gains across three benchmarks and multiple agent scaffolds.</p></div>
+      <div class="results-toolbar"><div><h3>Supervised fine-tuning</h3><p>Base → GraphForge SFT</p></div><div class="segmented" role="group" aria-label="Select model size"><button class="active" data-model="27b" aria-pressed="true">Qwen3.6-27B</button><button data-model="35b" aria-pressed="false">Qwen3.6-35B-A3B</button></div></div>
+      <div id="comparison-chart" class="comparison-chart" aria-live="polite"></div>
+      <p class="chart-note">GDPVal: OpenHands Elo. Workspace-Bench-Lite: Claude Code micro score. SpreadsheetBench II: Claude Code execution accuracy. Bar scales differ by benchmark.</p>
+      <details class="results-details" open><summary>Full benchmark comparison <span>All models · both scaffolds</span></summary><div class="table-scroll" tabindex="0" role="region" aria-label="Overall benchmark results"><table class="results-table"><caption>Overall pass@1 comparison reported in the supplied manuscript.</caption><thead><tr><th rowspan="2" scope="col">Model</th><th colspan="2" scope="colgroup">GDPVal <small>Elo ↑</small></th><th colspan="2" scope="colgroup">Workspace-Bench-Lite <small>Micro ↑</small></th><th colspan="2" scope="colgroup">SpreadsheetBench II <small>Accuracy ↑</small></th></tr><tr><th scope="col">OpenHands</th><th scope="col">Codex</th><th scope="col">Claude Code</th><th scope="col">Codex</th><th scope="col">Claude Code</th><th scope="col">Codex</th></tr></thead><tbody>
+        <tr class="table-group"><th colspan="7" scope="rowgroup">Frontier models</th></tr>
+        <tr><th scope="row">Claude Opus 5</th><td>1774.1</td><td>1753.1</td><td>70.1</td><td>68.9</td><td>33.6</td><td>—</td></tr>
+        <tr><th scope="row">GPT-5.6-sol</th><td>1687.1</td><td>1710.8</td><td>—</td><td>60.5</td><td>—</td><td>32.7</td></tr>
+        <tr><th scope="row">Qwen3.8-Max</th><td>1719.0</td><td>1771.0</td><td>67.4</td><td>66.6</td><td>34.9</td><td>34.9</td></tr>
+        <tr><th scope="row">GLM-5.3</th><td>1667.0</td><td>1543.7</td><td>67.7</td><td>61.4</td><td>32.1</td><td>31.5</td></tr>
+        <tr><th scope="row">Kimi-K3</th><td>1615.5</td><td>1664.4</td><td>65.8</td><td>60.6</td><td>35.8</td><td>37.7</td></tr>
+        <tr><th scope="row">DeepSeek-V4-Pro</th><td>1531.5</td><td>1576.7</td><td>58.1</td><td>57.9</td><td>29.3</td><td>35.5</td></tr>
+        <tr class="table-group"><th colspan="7" scope="rowgroup">Open-weight baseline</th></tr>
+        <tr><th scope="row">Nex-N2-Mini-35B</th><td>1288.8</td><td>1342.3</td><td>33.1</td><td>31.6</td><td>6.5</td><td>10.3</td></tr>
+        <tr class="table-group"><th colspan="7" scope="rowgroup">GraphForge models</th></tr>
+        <tr><th scope="row">Qwen3.6-35B-A3B</th><td>1260.6</td><td>1283.0</td><td>55.9</td><td>53.4</td><td>2.8</td><td>4.7</td></tr>
+        <tr class="ours"><th scope="row">+ GraphForge SFT</th><td>1362.3 <small>+101.7</small></td><td>1384.4 <small>+101.4</small></td><td>59.7 <small>+3.8</small></td><td>60.0 <small>+6.6</small></td><td>19.3 <small>+16.5</small></td><td>18.7 <small>+14.0</small></td></tr>
+        <tr><th scope="row">Qwen3.6-27B</th><td>1380.0</td><td>1364.0</td><td>56.0</td><td>61.4</td><td>10.3</td><td>15.6</td></tr>
+        <tr class="ours"><th scope="row">+ GraphForge SFT</th><td>1445.7 <small>+65.7</small></td><td>1427.4 <small>+63.4</small></td><td>63.7 <small>+7.7</small></td><td>65.2 <small>+3.8</small></td><td>24.0 <small>+13.7</small></td><td>24.6 <small>+9.0</small></td></tr>
+      </tbody></table></div><p class="table-note">GDPVal uses the 220-task GDPVal-AA subset and an internal Bradley–Terry Elo pool anchored at GLM-5.3 (OpenHands) = 1667. Each (model, scaffold) pair is a separate node. — indicates an unreported result. Confidence intervals are provided in the manuscript.</p></details>
+
+      <div class="rft-section"><div class="rft-intro"><span class="section-kicker">BEYOND SFT</span><h3>Rubrics also guide <br>self-improvement.</h3><p>Rejection fine-tuning selects from the SFT model’s own rollouts on new queries. Matched ablations use the same 462 queries, candidate pools, and optimization budget.</p></div><div class="rft-data"><div class="table-scroll" tabindex="0" role="region" aria-label="Rejection fine-tuning results"><table class="results-table compact"><caption>Qwen3.6-35B-A3B · selected scaffolds</caption><thead><tr><th scope="col">Selection</th><th scope="col">GDPVal<small>OpenHands</small></th><th scope="col">Workspace<small>Claude Code</small></th><th scope="col">Spreadsheet<small>Claude Code</small></th></tr></thead><tbody><tr><th scope="row">SFT reference</th><td>1362.3</td><td>59.7</td><td>19.3</td></tr><tr class="ours"><th scope="row">Evidence-anchored RFT</th><td>1369.5</td><td>63.7</td><td>20.3</td></tr><tr><th scope="row">Unanchored RFT</th><td>1396.4</td><td>62.2</td><td>17.5</td></tr><tr><th scope="row">Random-of-4</th><td>1353.3</td><td>60.8</td><td>19.0</td></tr></tbody></table></div><p class="table-note">Evidence anchoring yields the strongest gains on Workspace-Bench-Lite and SpreadsheetBench II. GDPVal differences between RFT arms are not statistically resolved; unanchored selection has the higher Elo point estimate. RFT Elo is reported relative to the fixed SFT anchor.</p></div></div>
+    </section>
+
+    <section class="section section-tinted audit-section"><div class="container audit-layout"><div class="section-heading"><span class="section-kicker">EVIDENCE &amp; TRANSFER</span><h2>Check the data. <br>Test the signal.</h2><p>Audits help distinguish transferable working skills from proximity to benchmark content.</p></div><div class="audit-findings"><article><span class="audit-number">0</span><div><h3>Shared file hashes with GDPVal</h3><p>39,201 unique training files compared against 260 GDPVal reference files. The top 20 retrieved 13-gram pairs contain no substantive shared content.</p></div></article><article><span class="audit-number">155</span><div><h3>Tasks in uncovered occupations</h3><p>On these GDPVal tasks, SFT achieves a 0.739 win rate against the base model (95% CI: 0.671–0.803). Improvements extend beyond occupations in the training taxonomy.</p></div></article><article><span class="audit-number">−0.377</span><div><h3>Score change after deleting a cited worksheet</h3><p>The judge responds to structural evidence failures. Fine-grained row, numeric, and citation corruptions produce much smaller changes, indicating a remaining verification limitation.</p></div></article></div></div></section>
+
+    <section id="citation" class="section container citation-section"><div class="section-heading"><span class="section-kicker">05 / CITE GRAPHFORGE</span><h2>BibTeX</h2><p>If GraphForge is useful for your research, please consider citing our work.</p></div><div class="citation-box"><div class="code-toolbar"><span>graphforge.bib <span class="citation-status">/ arXiv:2609.38923</span></span><button id="copy-citation" class="copy-button" type="button">Copy BibTeX <span aria-hidden="true">⧉</span></button></div><pre><code id="bibtex">@misc{su2026graphforgetrainingworkingagents,
+      title={GraphForge: Training Working Agents with Graph-Anchored Workspace Synthesis},
+      author={Qisheng Su and Hanchen Wang and Guanru Zhu and Huicheng Jiang and Qiuyinzhe Zhang and Kou Shi and Zhen Fang and Ziao Zhang and Qingnan Ren and Honglin Guo and Zehui Chen and Tao Gui and Feng Zhao},
+      year={2026},
+      eprint={2609.38923},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2609.38923},
+}</code></pre><span id="copy-status" class="sr-only" role="status"></span></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="#"><img src="assets/favicon.svg" width="26" height="26" alt="">GraphForge</a><span>Real files → evidence graphs → working agents</span><a href="mailto:nicksu@mail.ustc.edu.cn">Contact <span aria-hidden="true">↗</span></a></div></footer>
+  <dialog id="figure-dialog" aria-label="Enlarged paper figure"><div class="dialog-toolbar"><span>GraphForge / Paper figure</span><button id="close-figure" type="button" aria-label="Close enlarged figure">Close <span aria-hidden="true">×</span></button></div><img id="enlarged-figure" alt=""><p>Scroll to explore · Press Esc to close</p></dialog>
+</body>
+</html>
